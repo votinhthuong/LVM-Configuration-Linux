@@ -8,9 +8,9 @@ Create physical volume (pv)
 
 Verify the PV status
 
-*pvscan
-pvs
-pvdisplay /dev/sdb
+*pvscan*
+*pvs*
+*pvdisplay /dev/sdb*
 
 Create volume group (vg) means adding physical volume (pv) to vg.
 
@@ -18,22 +18,22 @@ Create volume group (vg) means adding physical volume (pv) to vg.
 
 Verify the volume 
 
-*group status
-vgscan
-vgs
-vgdisplay vg01*
+*group status*
+*vgscan*
+*vgs*
+*vgdisplay vg01*
 
 Create a logical volume (lv) from volume group (vg)
 
-*lvcreate -l +100%FREE -n lv01 vg01
-lvcreate -L 50G -n lv01 vg01*
+*lvcreate -l +100%FREE -n lv01 vg01*
+*lvcreate -L 50G -n lv01 vg01*
 
 Verify the logical volume
 
-*volume
-lvscan
-lvs
-lvdisplay /dev/vg01/lv01*
+*volume*
+*lvscan*
+*lvs*
+*lvdisplay /dev/vg01/lv01*
 
 Format the lvm partition with ‘ext4’ file system by using mkfs command
 
@@ -41,8 +41,8 @@ Format the lvm partition with ‘ext4’ file system by using mkfs command
 
 Create a mount point using mkdir command and mount it
 
-*mkdir /data
-mount /dev/vg01/lv01 /data*
+*mkdir /data*
+*mount /dev/vg01/lv01 /data*
 
 Verify the mount 
 
