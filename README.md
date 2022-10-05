@@ -1,3 +1,5 @@
+# Create LVM from scratch
+
 **List all physical disks**
 
 *lsblk*
@@ -51,3 +53,37 @@
 **Permanent mounting append following entry in /etc/fstab file.**
 
 *echo '/dev/vg01/lv01  /data  ext4  defaults 0 0' | sudo  tee -a /etc/fstab*
+
+# Add disks to existed LVM
+
+**Create physical volumes (pv) on new disk /dev/sdc**
+
+*pvcreate /dev/sdc*
+
+**Run the following command to verify**
+
+*lvmdiskscan -l*
+
+**Add newly created pv named /dev/sdc to an existing lv**
+
+*vgextended vg01 /dev/sdc*
+
+**Extend more space of logical volume:**
+
+***- Add 10GB:***
+
+*lvextend -L+10G /dev/vg01/lv01*
+
+***- Add 100% of new disk to current LVM:***
+
+*lvextend -l +100%FREE /dev/vg01/lv01*
+
+**Resize lvm after expand more size**
+
+*resize2fs -p /dev/vg01/lv01*
+
+**Verify results**
+
+*df -H*
+
+
